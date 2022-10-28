@@ -5,14 +5,12 @@ const helmet = require("helmet");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
 var router = require('./routes/users-route.js');
+const db = require("./config/connection.js");
 // const {userRoute} = require("./routes/users-route.js")
 
 dotenv.config();
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/socialmedia', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+
 
 mongoose.set('debug', true);
 
@@ -27,19 +25,22 @@ app.use(require("./routes/users-route.js"))
 // routes.initialize(app);
 };
 
-app.get("/", (req,res) =>{
-  res.send("Welcome to Homepage!")
-})
+// app.get("/home", (req,res) =>{
+//   res.send("Welcome to Homepage!")
+// })
+// app.post("/post", (req,res) =>{
+//   res.send("You Posted Something!")
+// })
 
-app.get(userRoute(), (req,res) =>{
-  res.send("Welcome to User page!")
-}),
+// app.get("/users", (req,res) =>{
+//   res.send("Welcome to User page!")
+// }),
 
 // app.use("/api/users", router);
 
 
-module.exports = router 
-
-app.listen(3002, ()=>{
+db.once("open", () => {
+  app.listen(3002, ()=>{
     console.log("Server is live!")
+})
 })
