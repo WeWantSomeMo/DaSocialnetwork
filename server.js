@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const helmet = require("helmet");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
-var router = require('./routes/users-route.js');
+const routes = require("./routes")
 const db = require("./config/connection.js");
 // const {userRoute} = require("./routes/users-route.js")
 
@@ -18,12 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
 app.use(helmet());
 app.use(morgan("common"));
-
-function userRoute(){
-app.use(require("./routes/users-route.js"))
-// app.use(app.router);
-// routes.initialize(app);
-};
+app.use(routes)
 
 // app.get("/home", (req,res) =>{
 //   res.send("Welcome to Homepage!")
