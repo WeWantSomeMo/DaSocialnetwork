@@ -24,7 +24,7 @@ const userController = {
 
     deleteUsers(request,response) {
         console.log(res, "This is Deleting Stuff!")
-        User.findOneAndDelete(request.body).then((res)=> {
+        User.findOneAndRemove(request.body).then((res)=> {
             response.json(res)
         }).catch((err)=> {
         console.log(err, "this is the error on CUln30")
