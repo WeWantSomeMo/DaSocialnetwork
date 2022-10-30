@@ -23,7 +23,7 @@ const userController = {
     },
 
     deleteUsers(request,response) {
-        console.log(res, "This is Deleting Stuff!")
+        console.log(response, "This is Deleting Stuff!")
         User.findOneAndRemove(request.body).then((res)=> {
             response.json(res)
         }).catch((err)=> {
