@@ -24,7 +24,7 @@ const userController = {
 
     deleteUsers(request,response) {
         console.log(res, "This is Deleting Stuff!")
-        User.delete(request.body).then((res)=> {
+        User.findOneAndDelete(request.body).then((res)=> {
             response.json(res)
         }).catch((err)=> {
         console.log(err, "this is the error on CUln30")
@@ -44,7 +44,7 @@ const userController = {
 
     updateUsers(request,response) {
         console.log(res, "This is Updating Stuff!")
-        User.patch(request.body).then((res)=> {
+        User.findOneAndUpdate(request.body).then((res)=> {
             response.json(res)
         }).catch((err)=> {
         console.log(err, "this is the error on CUln30")
