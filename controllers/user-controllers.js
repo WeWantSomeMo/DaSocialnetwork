@@ -20,7 +20,39 @@ const userController = {
             console.log(err, "this is the error on CUln20")
             response.status(500).json(err)
         })
-    }
+    },
+
+    deleteUsers(request,response) {
+        console.log(res, "This is Deleting Stuff!")
+        User.delete(request.body).then((res)=> {
+            response.json(res)
+        }).catch((err)=> {
+        console.log(err, "this is the error on CUln30")
+        response.status(500).json(err)
+        })
+    },
+
+    getUsersbyId(request,response) {
+        console.log(res, "This is Updating Stuff!")
+        User.findById(request.body).then((res)=> {
+            response.json(res)
+        }).catch((err)=> {
+        console.log(err, "this is the error on CUln30")
+        response.status(500).json(err)
+        })
+    },
+
+    updateUsers(request,response) {
+        console.log(res, "This is Updating Stuff!")
+        User.patch(request.body).then((res)=> {
+            response.json(res)
+        }).catch((err)=> {
+        console.log(err, "this is the error on CUln30")
+        response.status(500).json(err)
+        })
+    },
+    
+
 }
 
 module.exports = userController

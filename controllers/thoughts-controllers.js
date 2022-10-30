@@ -1,12 +1,13 @@
 const { Thought } = require("../models")
 
 module.exports = {
-    getThoughts(re,res) {
+    getAllthoughts(re,res) {
         Thought.find()
         .then((thoughtdata) => res.json(thoughtdata))
         .catch((err) => res.status(500).json(err));
     },
-    getThoughts(req, res) {
+
+    getAllthoughts(req, res) {
         Thought.findOne({ _id: req.params.ThoughtId })
           .then((Thought) =>
             !Thought
@@ -15,6 +16,7 @@ module.exports = {
           )
           .catch((err) => res.status(500).json(err));
       },
+
     createThoughts(req, res) {
         Thought.create(req.body)
           .then((Thoughts) => {
@@ -37,21 +39,21 @@ module.exports = {
           });
     },
 
-    updateApplication(req, res) {
-        Application.findOneAndUpdate(
-          { _id: req.params.applicationId },
+    updateThought(req, res) {
+        Thought.findOneAndUpdate(
+          { _id: req.params.ThoughtId },
           { $set: req.body },
           { runValidators: true, new: true }
         )
-          .then((application) =>
-            !application
+          .then((Thought =>
+            !Thought
               ? res.status(404).json({ message: 'No application with this id!' })
-              : res.json(application)
+              : res.json(Thought)
           )
           .catch((err) => {
             console.log(err);
             res.status(500).json(err);
-          });
+          }));
     },
 
 

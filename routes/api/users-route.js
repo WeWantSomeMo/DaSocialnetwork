@@ -9,7 +9,14 @@ const {
 
 router.route("/getAllusers").get(getAllusers)
 
+router.route("/getUsersbyId").get(getUsersbyId)
+
 router.route("/createUsers").post(createUsers)
+
+router.route("/updateUsers").patch(updateUsers)
+
+router.route("/deleteUsers").delete(deleteUsers)
+
 
 
 
