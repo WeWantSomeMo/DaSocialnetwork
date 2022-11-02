@@ -1,4 +1,4 @@
-const { Thought } = require("../models")
+const { User, Thought } = require("../models")
 
 module.exports = {
     getAllthoughts(re,res) {
@@ -20,7 +20,7 @@ module.exports = {
     createThoughts(req, res) {
         Thought.create(req.body)
           .then((Thoughts) => {
-            return User.findOneAndUpdate(
+            return Thought.findOneAndUpdate(
               { _id: req.body.userId },
               { $addToSet: { applications: Thoughts._id } },
               { new: true }
