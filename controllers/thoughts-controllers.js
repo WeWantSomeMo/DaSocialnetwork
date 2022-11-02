@@ -7,7 +7,7 @@ module.exports = {
         .catch((err) => res.status(500).json(err));
     },
 
-    getAllthoughts(req, res) {
+    getThoughtsbyId(req, res) {
         Thought.findOne({ _id: req.params.ThoughtId })
           .then((Thought) =>
             !Thought

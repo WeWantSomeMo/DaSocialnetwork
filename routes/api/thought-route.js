@@ -5,7 +5,6 @@ const {
     createThoughts,
     deleteThoughts,
 } = require("../../controllers/thoughts-controllers");
-const { route } = require("../../controllers/thoughts-controllers");
 
 router.route("/getAllthoughts").get(getAllthoughts)
 
@@ -13,7 +12,7 @@ router.route("/createThoughts").post(createThoughts)
 
 router.route("/getThoughtsbyId").get(getThoughtsbyId)
 
-router.route("/deleteThoughts").delete(deleteThoughts)
+// router.route("/deleteThoughts").delete(deleteThoughts)
 
 
 
