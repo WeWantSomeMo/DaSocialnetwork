@@ -18,11 +18,11 @@ module.exports = {
       },
 
     createThoughts(req, res) {
-      Thought.create({ thoughtText: req.body.thoughtText })
-          .then((Thoughts) => {
-            return Thought.findOneAndUpdate(
-              { _id: req.body.userId },
-              { $addToSet: { applications: Thoughts._id } },
+      Thought.create({ thoughtText: req.body.thoughtText, username: req.body.username })
+          .then((thoughtsData) => {
+            return User.findOneAndUpdate(
+              { username: req.body.username },
+              { $addToSet: { thoughts: thoughtsData._id } },
               { new: true }
             );
           })
