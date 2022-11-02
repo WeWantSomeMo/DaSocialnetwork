@@ -21,7 +21,7 @@ module.exports = {
       Thought.create({ thoughtText: req.body.thoughtText })
           .then((Thoughts) => {
             return Thought.findOneAndUpdate(
-              { _id: req.body.Id },
+              { _id: req.body.userId },
               { $addToSet: { applications: Thoughts._id } },
               { new: true }
             );
