@@ -4,8 +4,8 @@ const {
     getThoughtsbyId,
     createThoughts,
     deleteThoughts,
-} = require("../../controllers/thought-controllers");
-const { route } = require("./thought-controllers");
+} = require("../../controllers/thoughts-controllers");
+const { route } = require("../../controllers/thoughts-controllers");
 
 router.route("/getAllthoughts").get(getAllthoughts)
 

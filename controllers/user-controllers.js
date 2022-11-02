@@ -4,7 +4,7 @@ const { User, Thought } = require("../models")
 const userController = {
     getAllusers(request,response) {
         User.find().then((res)=> {
-            console.log(res, "This is the response. UCln7")
+            console.log(response, "This is the response. UCln7")
             response.json(res)
         }).catch((err)=> {
             console.log(err,"This went WROng. UCln11")
@@ -33,7 +33,7 @@ const userController = {
     },
 
     getUsersbyId(request,response) {
-        console.log(res, "This is Updating Stuff!")
+        console.log(response, "This is Updating Stuff!")
         User.findById(request.body).then((res)=> {
             response.json(res)
         }).catch((err)=> {
