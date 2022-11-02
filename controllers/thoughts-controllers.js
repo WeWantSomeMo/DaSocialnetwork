@@ -39,21 +39,25 @@ module.exports = {
           });
     },
 
-    updateThought(req, res) {
-        Thought.findOneAndUpdate(
-          { _id: req.params.ThoughtId },
-          { $set: req.body },
-          { runValidators: true, new: true }
+    deleteThought(req, res) {
+      Thought.findOneAndRemove({ _id: req.params.thoughtId })
+        .then((thought) =>
+          !thought
+            ? res.status(404).json({ message: 'No application with this id!' })
+            : User.findOneAndUpdate(
+                { thoughts: req.params.thoughtId },
+                { $pull: { thoughts: req.params.thoughtId } },
+                { new: true }
+              )
         )
-          .then((Thought =>
-            !Thought
-              ? res.status(404).json({ message: 'No application with this id!' })
-              : res.json(Thought)
-          )
-          .catch((err) => {
-            console.log(err);
-            res.status(500).json(err);
-          }));
+        .then((user) =>
+          !user
+            ? res.status(404).json({
+                message: 'Application created but no user with this id!',
+              })
+            : res.json({ message: 'Application successfully deleted!' })
+        )
+        .catch((err) => res.status(500).json(err));
     },
 
 

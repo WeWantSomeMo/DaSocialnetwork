@@ -11,11 +11,11 @@ router.route("/getAllthoughts").get(getAllthoughts)
 
 router.route("/createThoughts").post(createThoughts)
 
-// router.route("/updateThoughts").post(updateThought)
+router.route("/updateThoughts").post(updateThought)
 
 // router.route("/getThoughtsbyId").get(getThoughtsbyId)
 
-// router.route("/deleteThoughts").delete(deleteThoughts)
+router.route("/deleteThoughts").delete(deleteThoughts)
 
 
 
