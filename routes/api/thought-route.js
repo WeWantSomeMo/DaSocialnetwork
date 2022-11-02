@@ -11,7 +11,7 @@ router.route("/getAllthoughts").get(getAllthoughts)
 
 router.route("/createThoughts").post(createThoughts)
 
-router.route("/updateThoughts").post(updateThought)
+router.route("/updateThoughts").post(updateThoughts)
 
 // router.route("/getThoughtsbyId").get(getThoughtsbyId)
 
