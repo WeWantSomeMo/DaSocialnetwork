@@ -3,12 +3,15 @@ const {
     getAllthoughts,
     getThoughtsbyId,
     createThoughts,
+    updateThoughts,
     deleteThoughts,
 } = require("../../controllers/thoughts-controllers");
 
 router.route("/getAllthoughts").get(getAllthoughts)
 
 router.route("/createThoughts").post(createThoughts)
+
+// router.route("/updateThoughts").post(updateThought)
 
 // router.route("/getThoughtsbyId").get(getThoughtsbyId)
 
