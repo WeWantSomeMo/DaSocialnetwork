@@ -11,7 +11,7 @@ router.route("/getAllthoughts").get(getAllthoughts)
 
 router.route("/createThoughts").post(createThoughts)
 
-router.route("/updateThoughts").post(updateThoughts)
+router.route("/updateThoughts/:thoughtId").post(updateThoughts)
 
 // router.route("/getThoughtsbyId").get(getThoughtsbyId)
 
@@ -20,5 +20,5 @@ router.route("/deleteThoughts").delete(deleteThoughts)
 
 
 
-
+ 
 module.exports = router 
