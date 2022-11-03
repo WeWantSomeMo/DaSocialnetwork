@@ -39,7 +39,7 @@ module.exports = {
           });
     },
 
-    updateThought(req, res) {
+    updateThoughts(req, res) {
      Thought.findOneAndUpdate(
         { _id: req.params.thoughtId },
         { $set: req.body },
@@ -57,7 +57,7 @@ module.exports = {
     },
   
 
-    deleteThought(req, res) {
+    deleteThoughts(req, res) {
       Thought.findOneAndRemove({ _id: req.params.thoughtId })
         .then((thought) =>
           !thought
