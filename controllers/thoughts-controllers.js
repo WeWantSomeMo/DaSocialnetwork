@@ -57,26 +57,15 @@ module.exports = {
     },
   
 
-    deleteThoughts(req, res) {
-      Thought.findOneAndRemove({ _id: req.params.thoughtId })
-        .then((thought) =>
-          !thought
-            ? res.status(404).json({ message: 'No application with this id!' })
-            : Thought.findOneAndUpdate(
-                { thoughts: req.params.thoughtId },
-                { $pull: { thoughts: req.params.thoughtId } },
-                { new: true }
-              )
-        )
-        .then((user) =>
-          !user
-            ? res.status(404).json({
-                message: 'Application created but no user with this id!',
-              })
-            : res.json({ message: 'Application successfully deleted!' })
-        )
-        .catch((err) => res.status(500).json(err));
-    },
+    deleteThoughts(request,response) {
+      console.log(response, "This is Deleting Stuff!")
+      Thought.findOneAndRemove(request.body).then((res)=> {
+          response.json(res)
+      }).catch((err)=> {
+      console.log(err, "this is the error on CUln30")
+      response.status(500).json(err)
+      })
+  },
 
 
 
